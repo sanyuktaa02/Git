@@ -1,0 +1,32 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Left Section: Info -->
+    <div class="info-section">
+        <h1>Welcome to the Recruitment Portal</h1>
+        <p>Find your dream job or hire the best candidates with ease!</p>
+    </div>
+
+    <!-- Right Section: Login and Signup Forms -->
+    <div class="form-section">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Signup Form -->
+        <h2>Sign Up</h2>
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Sign Up!</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
